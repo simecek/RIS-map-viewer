@@ -14,6 +14,9 @@ plotgeno <- function(tmp) {
                    95272651, 90772031, 61342430, 166650296,
                    15902555, 16299)
   
+  # sort tmp
+  tmp <- tmp[order(tmp$chr, tmp$from),]
+  
     if (nrow(tmp)>0) {
       
       plot(0,1, xlim=c(0,maxx)/10^6, ylim=c(20,1), type="n", yaxt="n", xlab="Mb", ylab="chr", main=tmp$strain[1], cex.main=2)

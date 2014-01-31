@@ -1,3 +1,5 @@
 library(shiny)
-setwd("H:\\SmallProjects\\1308 shiny")
-runApp("H:\\SmallProjects\\1308 shiny")
+setwd("c:\\temp\\git\\RIS-map-viewer")
+runApp("c:\\temp\\git\\RIS-map-viewer")
+
+
