@@ -2,6 +2,7 @@ require(shiny)
 
 source("plotgeno.R")
 dataset <- readRDS("dataset.rds")
+strains = readRDS("strains.rds")
 panels <- readRDS("panels.rds")
 
 get.strain <- function(input) {

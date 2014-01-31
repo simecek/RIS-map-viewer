@@ -2,7 +2,7 @@ library(shiny)
 
 dataset = readRDS("dataset.rds")
 strains = readRDS("strains.rds")
-
+panels = readRDS("panels.rds")
 
 shinyUI(pageWithSidebar(
   
