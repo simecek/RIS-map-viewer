@@ -17,6 +17,7 @@ dataset$type.explained[dataset$type =="BB" & dataset$panel == "PWD.B6" ] <- "PWD
 
 ## rename strains and resort them 
 
+
 # bxd
 dataset$strain <- sub("BXD-", "BXD", dataset$strain)
 dataset$strain <- sub("(BXD[0-9]*)[!0-9]?.*", "\\1", dataset$strain)
@@ -42,10 +43,13 @@ a.b6 <- a.b6[order(as.numeric(sub("C57BL/6J-Chr(.*)<.*","\\1", a.b6)))]
 msm.b6 <- strain.levels[grep("MSM/Ms", strain.levels)]
 msm.b6 <- msm.b6[order(as.numeric(sub("C57BL/6J-Chr([0-9]*)[CT]?<.*","\\1", msm.b6)))]
 strain.levels <- c(axbs, bxas, bxds, lxss, pwd.b6, a.b6, msm.b6)
+
 dataset$strain <- factor(dataset$strain, levels = strain.levels)
+dataset$chr <- factor(dataset$chr, levels = c(as.character(1:19),"X","Y","M"))
 
 dataset <- dataset[order(dataset$panel, dataset$strain, dataset$chr, dataset$from) ,]
 dataset$strain <- as.character(dataset$strain)
+dataset$chr <- as.character(dataset$chr)
 
 # panels headers
 panels <- c("AXB/BXA RIS", 
@@ -66,6 +70,8 @@ for (p in unique(dataset$panel)) {
 }  
 
 ### MISSING - conversion to mm10
+snpInfo <- read.csv("")
+
 
 # save it
 saveRDS(dataset,"dataset.rds")

@@ -37,7 +37,7 @@ shinyServer(function(input, output) {
     
     filename = function() { paste(make.names(get.strain(input)), '.csv', sep='') },
     content = function(file) {
-      write.csv(subset(dataset, strain==get.strain(input)), file, row.names=FALSE)
+      write.csv(subset(dataset, strain%in%c(get.strain(input),get.compare(input))), file, row.names=FALSE)
     }
   )
   
