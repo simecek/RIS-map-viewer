@@ -1,8 +1,7 @@
 library(shiny)
 
-dataset = readRDS("dataset.rds")
-strains = readRDS("strains.rds")
-panels = readRDS("panels.rds")
+panels <- readRDS("data/panels.rds")
+strains<- readRDS("data/strains.rds")
 
 shinyUI(pageWithSidebar(
   
@@ -51,12 +50,21 @@ shinyUI(pageWithSidebar(
     
     helpText(" "," "," "," "),
     div(HTML("<br><br><br><br>")),
+    
+    
     selectInput("dataset", "Download the strain as",
-                choices = c("list of intervals", "smoothed genotype", "raw MDA data")),
+                choices = c("list of intervals", "csvr format")),
     downloadButton('downloadStrain', 'Download '),
     selectInput("dataset", "Download the panel as",
-                choices = c("list of intervals", "smoothed genotype", "raw MDA data")),
-    downloadButton('downloadPanel', 'Download ')
+                choices = c("list of intervals", "csvr format")),
+    downloadButton('downloadPanel', 'Download '),
+    
+    div(HTML("<br><br>")),
+    radioButtons("assembly", "Genome assembly", c("mm9", "mm10"), selected="mm9"),
+    
+    div("Developed by Petr Simecek, see ",
+        a("Github", href="https://github.com/simecek/RIS-map-viewer"),
+        " for R/shiny source code")
   ),
   
   # Show a plot of the generated distribution
