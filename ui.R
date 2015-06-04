@@ -11,7 +11,7 @@ shinyUI(pageWithSidebar(
   # Sidebar with a slider input for number of observations
   sidebarPanel(
     selectInput(inputId = "panel", label = strong("Panel"), 
-                choices = panels),
+                choices = panels, selected = "BXD RIS"),
     helpText("RIS = recombinant inbred strains", br(), 
              "CSS = chromosome substitution strains"),
     
@@ -55,6 +55,7 @@ shinyUI(pageWithSidebar(
     selectInput("dstrain", "Download the strain as",
                 choices = c("list of intervals", "csvr format")),
     downloadButton('downloadStrain', 'Download '),
+    div(HTML("<br>")),
     selectInput("dataset", "Download the panel as",
                 choices = c("list of intervals", "csvr format")),
     downloadButton('downloadPanel', 'Download '),
