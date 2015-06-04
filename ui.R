@@ -52,7 +52,7 @@ shinyUI(pageWithSidebar(
     div(HTML("<br><br><br><br>")),
     
     
-    selectInput("dataset", "Download the strain as",
+    selectInput("dstrain", "Download the strain as",
                 choices = c("list of intervals", "csvr format")),
     downloadButton('downloadStrain', 'Download '),
     selectInput("dataset", "Download the panel as",
