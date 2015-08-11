@@ -44,7 +44,8 @@ shinyServer(function(input, output) {
     filename = function() { paste(make.names(get.strain(input)), '.csv', sep='') },
     content = function(file) {
       if (input$dstrain == "list of intervals") {
-        write.csv(aconvert(subset(dataset, strain%in%c(get.strain(input),get.compare(input))),input$assembly), file, row.names=FALSE)
+        tmp <- aconvert(subset(dataset, strain%in%c(get.strain(input),get.compare(input))),input$assembly)
+        write.csv(tmp, file, row.names=FALSE)
       } else {
         tmp <- read.csv(csvr.files[input$panel], as.is=TRUE, check.names=FALSE)
         cols <- c(1:4, which(names(tmp)==input$strain1),ncol(tmp))
@@ -61,7 +62,8 @@ shinyServer(function(input, output) {
     
     content = function(file) {
       if (input$dataset == "list of intervals") {
-        write.csv(aconvert(subset(dataset, panel==input$panel),input$assembly), file, row.names=FALSE)
+        tmp <- aconvert(subset(dataset, panel==input$panel),input$assembly)
+        write.csv(tmp, file, row.names=FALSE)
       } else {
         tmp <- read.csv(csvr.files[input$panel], as.is=TRUE, check.names=FALSE)
         write.csv(aconvert2(tmp,input$assembly), file, row.names=FALSE)
