@@ -8,7 +8,7 @@ shinyUI(pageWithSidebar(
   # Application title
   headerPanel("RIS strains"),
   
-  # Sidebar with a slider input for number of observations
+  # Sidebar with a conditional selection input
   sidebarPanel(
     selectInput(inputId = "panel", label = strong("Panel"), 
                 choices = panels, selected = "BXD RIS"),
@@ -68,7 +68,7 @@ shinyUI(pageWithSidebar(
         " for R/shiny source code")
   ),
   
-  # Show a plot of the generated distribution
+  # Show a generated plot 
   mainPanel(
     plotOutput("genoPlot", width="800px", height="800px")
   )
